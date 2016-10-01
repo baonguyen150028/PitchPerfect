@@ -24,15 +24,15 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewWillAppear(_ animated: Bool) {
 
         stopButton.isEnabled = false
+        resumeButton.isEnabled = false
+        pauseButton.isEnabled = false
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         recordingLabel.text = DataModel.helpText.startRecordText
-        resumeButton.isEnabled = false
-        stopButton.isEnabled = false
-        pauseButton.isEnabled = false 
+
     }
 
     override func didReceiveMemoryWarning() {
