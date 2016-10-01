@@ -23,15 +23,13 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
 
-        stopButton.isEnabled = false
-        resumeButton.isEnabled = false
-        pauseButton.isEnabled = false
+        recordingLabel.text = DataModel.helpText.startRecordText
+        audioControllsHidden(true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        recordingLabel.text = DataModel.helpText.startRecordText
 
     }
 
@@ -45,10 +43,12 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         // Show text to let user know in recording progress.
         recordingLabel.text = DataModel.helpText.RecordingText
 
-        // Disable record button and enable stop record button when recording.
+        //Show all recording controls:
+        audioControllsHidden(false)
+
+        //Enable stop and pause buttons during recording:
         stopButton.isEnabled = true
-        recordButton.isEnabled = false
-        resumeButton.isEnabled = false
+        pauseButton.isEnabled = true
 
         //Create the filepath and URL for the audio file.
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
@@ -107,10 +107,13 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func stopAudio(_ sender: AnyObject) {
         // Enable recordButton and display useful text to let user know in stopAudio
         recordButton.isEnabled = true
+
+
+
         recordingLabel.text = DataModel.helpText.startRecordText
 
-        // Disable stop button
-        stopButton.isEnabled = false
+        //Hide all recording controls:
+        audioControllsHidden(true)
 
         // Stop audioRecorder
         audioRecorder.stop()
@@ -125,6 +128,12 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
 
     }
 
+    func audioControllsHidden(_ hidden:Bool){
+        //Hide (true) or show (false) recording controls (play, pause, resume)
+        stopButton.isHidden = hidden
+        pauseButton.isHidden = hidden
+        resumeButton.isHidden = hidden
+    }
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("Finish Recording")
         if (flag){

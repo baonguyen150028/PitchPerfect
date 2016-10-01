@@ -96,13 +96,13 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-NQ-jSg" userLabel="SnailButton">
                                                 <state key="normal" image="SnailButton"/>
                                                 <connections>
-                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="oZH-qr-X1K"/>
+                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="eZN-Y9-kc4"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CC-qg-0vw" userLabel="KangarooButton">
                                                 <state key="normal" image="KangarooButton"/>
                                                 <connections>
-                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="Ozn-w4-fCj"/>
+                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="LV5-CZ-Zwv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -112,7 +112,7 @@
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brm-bS-lKI" userLabel="ChipmunkButton">
                                                 <state key="normal" image="ChipmunkButton"/>
                                                 <connections>
-                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="mKn-h0-V8m"/>
+                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="hEK-y3-nId"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okg-Wf-ymZ" userLabel="DarthVaderButton">
@@ -128,13 +128,13 @@
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccg-Y7-yl8" userLabel="EchoButton">
                                                 <state key="normal" image="EchoButton"/>
                                                 <connections>
-                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="fYi-eG-hvn"/>
+                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="x1D-dB-8Jw"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvA-J6-ucO" userLabel="ReverbButton">
                                                 <state key="normal" image="ReverbButton"/>
                                                 <connections>
-                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="svg-88-hin"/>
+                                                    <action selector="playSoundForButton:" destination="lit-1S-doa" eventType="touchUpInside" id="ZN8-nS-q6V"/>
                                                 </connections>
                                             </button>
                                         </subviews>
