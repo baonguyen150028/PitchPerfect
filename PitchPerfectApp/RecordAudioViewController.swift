@@ -18,9 +18,28 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet var pauseButton: UIButton!
     var audioRecorder: AVAudioRecorder!
     // Show progress doing for users
- 
+    /*
 
+     // MARK: Actions
 
+     @IBAction func sunRiseAndSet(sender: AnyObject) {
+     // Fade out
+     imageView.fadeOut(1.0, delay: 0.0, completion: {
+     (finished: Bool) -> Void in
+
+     //Once the imageView is invisible, set the image property to a new value
+     if (self.imageView.image == UIImage(named: "sunrise")) {
+     self.imageView.image = UIImage(named:"sunset")!
+     } else {
+     self.imageView.image = UIImage(named:"sunrise")!
+     }
+
+     // Then fade the image back in
+     self.imageView.fadeIn(1.0, delay: 0.0, completion: nil)
+     })
+     }
+
+*/
     override func viewWillAppear(_ animated: Bool) {
 
         recordingLabel.text = DataModel.helpText.startRecordText
@@ -71,6 +90,9 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.isMeteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
+
+        animateButton(sender as? UIButton)
+
     }
 
 
@@ -134,6 +156,13 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         pauseButton.isHidden = hidden
         resumeButton.isHidden = hidden
     }
+
+    func animateButton(_ button: UIButton?) {
+        //Fade button in and out:
+        button?.fadeOutAndIn()
+    }
+
+
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("Finish Recording")
         if (flag){
