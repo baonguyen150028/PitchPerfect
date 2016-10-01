@@ -13,7 +13,7 @@
 		7FD5940F1D9E7CDE00CBE3EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FD5940E1D9E7CDE00CBE3EC /* Assets.xcassets */; };
 		7FD594121D9E7CDE00CBE3EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FD594101D9E7CDE00CBE3EC /* LaunchScreen.storyboard */; };
 		7FD5941A1D9E8EF400CBE3EC /* PlayAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD594191D9E8EF400CBE3EC /* PlayAudioViewController.swift */; };
-		7FD5941C1D9E96DE00CBE3EC /* PlaySoundsViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD5941B1D9E96DE00CBE3EC /* PlaySoundsViewController+Audio.swift */; };
+		7FD5941C1D9E96DE00CBE3EC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD5941B1D9E96DE00CBE3EC /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		7FD594111D9E7CDE00CBE3EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FD594131D9E7CDE00CBE3EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FD594191D9E8EF400CBE3EC /* PlayAudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayAudioViewController.swift; sourceTree = "<group>"; };
-		7FD5941B1D9E96DE00CBE3EC /* PlaySoundsViewController+Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlaySoundsViewController+Audio.swift"; sourceTree = "<group>"; };
+		7FD5941B1D9E96DE00CBE3EC /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +39,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7FA6AAF21D9F4B57005327ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FD5941B1D9E96DE00CBE3EC /* DataModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7FA6AAF31D9F4B60005327ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7FD594191D9E8EF400CBE3EC /* PlayAudioViewController.swift */,
+				7FD594091D9E7CDE00CBE3EC /* RecordAudioViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7FA6AAF41D9F4B6E005327ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7FD5940B1D9E7CDE00CBE3EC /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		7FD593FB1D9E7CDE00CBE3EC = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +83,10 @@
 		7FD594061D9E7CDE00CBE3EC /* PitchPerfectApp */ = {
 			isa = PBXGroup;
 			children = (
-				7FD594191D9E8EF400CBE3EC /* PlayAudioViewController.swift */,
+				7FA6AAF41D9F4B6E005327ED /* View */,
+				7FA6AAF31D9F4B60005327ED /* Controller */,
+				7FA6AAF21D9F4B57005327ED /* Model */,
 				7FD594071D9E7CDE00CBE3EC /* AppDelegate.swift */,
-				7FD594091D9E7CDE00CBE3EC /* RecordAudioViewController.swift */,
-				7FD5941B1D9E96DE00CBE3EC /* PlaySoundsViewController+Audio.swift */,
-				7FD5940B1D9E7CDE00CBE3EC /* Main.storyboard */,
 				7FD5940E1D9E7CDE00CBE3EC /* Assets.xcassets */,
 				7FD594101D9E7CDE00CBE3EC /* LaunchScreen.storyboard */,
 				7FD594131D9E7CDE00CBE3EC /* Info.plist */,
@@ -143,7 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD5940A1D9E7CDE00CBE3EC /* RecordAudioViewController.swift in Sources */,
-				7FD5941C1D9E96DE00CBE3EC /* PlaySoundsViewController+Audio.swift in Sources */,
+				7FD5941C1D9E96DE00CBE3EC /* DataModel.swift in Sources */,
 				7FD594081D9E7CDE00CBE3EC /* AppDelegate.swift in Sources */,
 				7FD5941A1D9E8EF400CBE3EC /* PlayAudioViewController.swift in Sources */,
 			);
@@ -305,6 +329,7 @@
 				7FD594181D9E7CDE00CBE3EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
