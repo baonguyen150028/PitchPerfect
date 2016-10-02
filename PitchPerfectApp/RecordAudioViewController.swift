@@ -17,29 +17,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var pauseButton: UIButton!
     var audioRecorder: AVAudioRecorder!
-    // Show progress doing for users
-    /*
-
-     // MARK: Actions
-
-     @IBAction func sunRiseAndSet(sender: AnyObject) {
-     // Fade out
-     imageView.fadeOut(1.0, delay: 0.0, completion: {
-     (finished: Bool) -> Void in
-
-     //Once the imageView is invisible, set the image property to a new value
-     if (self.imageView.image == UIImage(named: "sunrise")) {
-     self.imageView.image = UIImage(named:"sunset")!
-     } else {
-     self.imageView.image = UIImage(named:"sunrise")!
-     }
-
-     // Then fade the image back in
-     self.imageView.fadeIn(1.0, delay: 0.0, completion: nil)
-     })
-     }
-
-*/
+   
     override func viewWillAppear(_ animated: Bool) {
 
         recordingLabel.text = DataModel.helpText.startRecordText

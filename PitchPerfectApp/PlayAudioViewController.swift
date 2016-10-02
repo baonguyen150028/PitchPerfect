@@ -37,32 +37,26 @@ class PlayAudioViewController: UIViewController {
             case .Echo: playSound(echo: true)
             case .Reverb: playSound(reverb: true)
         }
-            stopButton.isEnabled = true
+        stopButton.isEnabled = true
+
     }
     // Stop sound and config
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
         print("Stop Audio Button Pressed")
 
         stopButton.isEnabled = false
+        stopAudio()
 
-        if let stopTimer = stopTimer {
-            stopTimer.invalidate()
-        }
+        audioEngine = nil
+        audioPlayerNode = nil
 
-        if let audioPlayerNode = audioPlayerNode {
-            audioPlayerNode.stop()
-        }
-
-        if let audioEngine = audioEngine {
-            audioEngine.stop()
-            audioEngine.reset()
-        }
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
 
         stopButton.isEnabled = false
 
@@ -76,8 +70,14 @@ class PlayAudioViewController: UIViewController {
 
 
     }
+    override func viewWillAppear(_ animated: Bool) {
 
+         stopAudio()
 
+        audioEngine = nil
+        audioPlayerNode = nil
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -169,5 +169,20 @@ class PlayAudioViewController: UIViewController {
         alert.addAction(UIAlertAction(title: DataModel.Alerts.DismissAlert, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    // Stop audio
+    func stopAudio(){
 
+        if let stopTimer = stopTimer {
+            stopTimer.invalidate()
+        }
+
+        if let audioPlayerNode = audioPlayerNode {
+            audioPlayerNode.stop()
+        }
+
+        if let audioEngine = audioEngine {
+            audioEngine.stop()
+            audioEngine.reset()
+        }
+    }
 }
