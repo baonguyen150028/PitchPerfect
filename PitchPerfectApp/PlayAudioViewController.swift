@@ -19,15 +19,20 @@ class PlayAudioViewController: UIViewController {
     var stopTimer: Timer!
     var recordedAudioURL: NSURL!
 
+    var lastButton: UIButton?
+
     // Enum to switch play sound effect
     enum ButtonType: Int {case Slow = 0, Fast, Chipmunk, Varder, Echo, Reverb }
 
     // raw values correspond to sender tags
 
     // Play sound and config
+
     @IBAction func playSoundForButton(_ sender: UIButton) {
 
         print("Play Sound Button Pressed")
+        // Fade in button before
+        fadeInAnimate(lastButton)
 
         switch(ButtonType(rawValue: sender.tag)!){
             case .Slow: playSound(rate: 0.5)
@@ -38,12 +43,15 @@ class PlayAudioViewController: UIViewController {
             case .Reverb: playSound(reverb: true)
         }
         stopButton.isEnabled = true
-
+        lastButton = sender
+        fadeOutInAnimate(sender)
     }
     // Stop sound and config
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
         print("Stop Audio Button Pressed")
 
+        fadeInAnimate(lastButton)
+        
         stopButton.isEnabled = false
         stopAudio()
 
@@ -169,6 +177,17 @@ class PlayAudioViewController: UIViewController {
         alert.addAction(UIAlertAction(title: DataModel.Alerts.DismissAlert, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    //Animation
+
+    func fadeOutInAnimate(_ button: UIButton?) {
+        //Fade button in and out:
+        button?.fadeOutAndIn()
+    }
+    func fadeInAnimate(_ button: UIButton?) {
+
+        button?.fadeIn(duration: 0.25, delay: 0.0, completion: nil)
+    }
+
     // Stop audio
     func stopAudio(){
 

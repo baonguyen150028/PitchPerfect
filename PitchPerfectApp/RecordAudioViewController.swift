@@ -19,10 +19,19 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet var pauseButton: UIButton!
     var audioRecorder: AVAudioRecorder!
     let data = DataModel()
+
     override func viewWillAppear(_ animated: Bool) {
+        
         hintLabel.text = data.getRandomHint()
+
+        fadeInAnimate(recordButton)
+
         recordingLabel.text = data.helpText["startRecordText"]
+
+        stopButton.isEnabled = false
+
         audioControllsHidden(true)
+
     }
 
     override func viewDidLoad() {
@@ -39,6 +48,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(_ sender: AnyObject) {
 
         // Show text to let user know in recording progress.
+
         recordingLabel.text = data.helpText["recordingText"]
 
         //Show all recording controls:
@@ -47,6 +57,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         //Enable stop and pause buttons during recording:
         stopButton.isEnabled = true
         pauseButton.isEnabled = true
+        resumeButton.isEnabled = false
 
         //Create the filepath and URL for the audio file.
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
@@ -69,8 +80,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.isMeteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-
-        animateButton(sender as? UIButton)
+        fadeOutInAnimate(sender as? UIButton)
 
     }
 
@@ -136,9 +146,13 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         resumeButton.isHidden = hidden
     }
 
-    func animateButton(_ button: UIButton?) {
+    func fadeOutInAnimate(_ button: UIButton?) {
         //Fade button in and out:
         button?.fadeOutAndIn()
+    }
+    func fadeInAnimate(_ button: UIButton?) {
+
+        button?.fadeIn(duration: 1.0, delay: 0.0, completion: nil)
     }
 
 
