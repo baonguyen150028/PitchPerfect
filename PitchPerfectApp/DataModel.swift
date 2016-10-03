@@ -6,7 +6,7 @@
 //
 import UIKit
 import AVFoundation
-
+import GameKit
 class DataModel: UIViewController {
 
     struct Alerts {
@@ -21,12 +21,27 @@ class DataModel: UIViewController {
         static let AudioFileError = "Audio File Error"
         static let AudioEngineError = "Audio Engine Error"
     }
-    struct helpText {
-        static let startRecordText = "Tap to record"
-        static let RecordingText = "Recording..."
-        static let pauseRecordText = "Paused"
+    let helpText: [String:String] = [
+        "startRecordText" : "Tap to record",
+        "recordingText" : "Recording...",
+        "pauseRecordText" : "Paused",
+    ]
+
+    let hintText:[String] = [
+            "Avoid noise to record better.",
+            "Use pause button to pause recording progress",
+            "Make some funny melody :D"
+    ]
+    // Get random hint text to hintLabel
+
+    func getRandomHint() -> String {
+
+        let randomHint  = GKRandomSource.sharedRandom().nextInt(upperBound: hintText.count)
+
+        return hintText[randomHint]
     }
-    
+
+
     
 }
 

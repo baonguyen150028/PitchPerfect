@@ -11,16 +11,17 @@ import AVFoundation
 
 class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
 
+    @IBOutlet var hintLabel: UILabel!
     @IBOutlet var recordButton: UIButton!
     @IBOutlet var recordingLabel: UILabel!
     @IBOutlet var resumeButton: UIButton!
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var pauseButton: UIButton!
     var audioRecorder: AVAudioRecorder!
-   
+    let data = DataModel()
     override func viewWillAppear(_ animated: Bool) {
-
-        recordingLabel.text = DataModel.helpText.startRecordText
+        hintLabel.text = data.getRandomHint()
+        recordingLabel.text = data.helpText["startRecordText"]
         audioControllsHidden(true)
     }
 
@@ -38,7 +39,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(_ sender: AnyObject) {
 
         // Show text to let user know in recording progress.
-        recordingLabel.text = DataModel.helpText.RecordingText
+        recordingLabel.text = data.helpText["recordingText"]
 
         //Show all recording controls:
         audioControllsHidden(false)
@@ -77,7 +78,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func resumeAudio(_ sender: AnyObject) {
 
         //Label text to indicate users that recording is paused:
-        recordingLabel.text = DataModel.helpText.RecordingText
+        recordingLabel.text = data.helpText["recordingText"]
 
         // Continue recorder
         audioRecorder.record()
@@ -92,7 +93,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBAction func pauseAudio(_ sender: AnyObject) {
         //Label text to indicate users that recording is paused:
-        recordingLabel.text = DataModel.helpText.pauseRecordText
+        recordingLabel.text = data.helpText["pauseRecordText"]
 
         // Pause audioRecorder
         audioRecorder.pause()
@@ -110,7 +111,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
 
 
 
-        recordingLabel.text = DataModel.helpText.startRecordText
+        recordingLabel.text = data.helpText["startRecordText"]
 
         //Hide all recording controls:
         audioControllsHidden(true)
