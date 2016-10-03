@@ -24,13 +24,9 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         
         hintLabel.text = data.getRandomHint()
 
-        fadeInAnimate(recordButton)
 
-        recordingLabel.text = data.helpText["startRecordText"]
 
-        stopButton.isEnabled = false
-
-        audioControllsHidden(true)
+        audioControllsHidden(isRecording: false)
 
     }
 
@@ -52,7 +48,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         recordingLabel.text = data.helpText["recordingText"]
 
         //Show all recording controls:
-        audioControllsHidden(false)
+        audioControllsHidden(isRecording: true)
 
         //Enable stop and pause buttons during recording:
         stopButton.isEnabled = true
@@ -80,13 +76,13 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.isMeteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        fadeOutInAnimate(sender as? UIButton)
 
     }
 
 
     @IBAction func resumeAudio(_ sender: AnyObject) {
 
+        audioControllsHidden(isRecording: true)
         //Label text to indicate users that recording is paused:
         recordingLabel.text = data.helpText["recordingText"]
 
@@ -102,7 +98,11 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func pauseAudio(_ sender: AnyObject) {
+
+         fadeInAnimate(recordButton)
+
         //Label text to indicate users that recording is paused:
+
         recordingLabel.text = data.helpText["pauseRecordText"]
 
         // Pause audioRecorder
@@ -124,7 +124,7 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
         recordingLabel.text = data.helpText["startRecordText"]
 
         //Hide all recording controls:
-        audioControllsHidden(true)
+        audioControllsHidden(isRecording: false)
 
         // Stop audioRecorder
         audioRecorder.stop()
@@ -139,12 +139,27 @@ class RecordAudioViewController: UIViewController, AVAudioRecorderDelegate {
 
     }
 
-    func audioControllsHidden(_ hidden:Bool){
+    func audioControllsHidden(isRecording:Bool){
         //Hide (true) or show (false) recording controls (play, pause, resume)
-        stopButton.isHidden = hidden
-        pauseButton.isHidden = hidden
-        resumeButton.isHidden = hidden
+
+        if isRecording {
+
+            fadeOutInAnimate(recordButton)
+        } else {
+
+            fadeInAnimate(recordButton)
+
+        }
+
+        recordingLabel.text = isRecording ? data.helpText["recordingText"] : data.helpText["startRecordText"]
+
+        stopButton.isEnabled = isRecording ? true : false
+        stopButton.isHidden = isRecording ? false : true
+        pauseButton.isHidden = isRecording ? false : true
+        resumeButton.isHidden = isRecording ? false : true
+
     }
+
 
     func fadeOutInAnimate(_ button: UIButton?) {
         //Fade button in and out:
